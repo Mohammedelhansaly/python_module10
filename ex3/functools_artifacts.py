@@ -46,3 +46,27 @@ def spell_dispatcher() -> callable:
     def _(spell):
         result = [cast(s) for s in spell]
         return f"Multi cast:\n {"\n".join(result)}"
+    return cast
+
+
+def main():
+    print("Testing spell reducer...")
+    number = [10, 20, 30, 40]
+    try:
+        Sum = spell_reducer(number, "add")
+        mul = spell_reducer(number, "multiply")
+        max = spell_reducer(number, "max")
+
+        print(f"Sum: {Sum}")
+        print(f"Product: {mul}")
+        print(f"Max: {max}")
+    except ValueError as e:
+        print(e)
+    print()
+    print("Testing memoized fibonacci...")
+    print(f"Fib(10): {memoized_fibonacci(10)}")
+    print(f"Fib(15): {memoized_fibonacci(15)}")
+
+
+if __name__ == "__main__":
+    main()
